@@ -24,6 +24,7 @@ import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
+import AddProduct from './Component/Home/Products/AddProduct';
 
 const router = createBrowserRouter([
   {
@@ -48,7 +49,7 @@ const router = createBrowserRouter([
   {
     path:"/productdetails/:id",
     element:<ProductDetails/>,
-    loader: ({params})=>fetch(`https://fakestoreapi.com/products/${params.id}`)
+    loader: ({params})=>fetch(`http://localhost:5000/products/${params.id}`)
   },
   {
     path:"/dashboard",
@@ -57,7 +58,12 @@ const router = createBrowserRouter([
       {
         path:"/dashboard/productlist",
         element:<ProductList/>,
+      },
+      {
+        path:"/dashboard/addproduct",
+        element:<AddProduct/>
       }
+
     ]
  
     

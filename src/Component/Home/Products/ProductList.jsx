@@ -1,22 +1,20 @@
 import { useQuery } from '@tanstack/react-query'
-import axios from 'axios'
+
 import React from 'react'
+import { Link } from 'react-router-dom'
+import useProducts from '../../../hooks/useProducts'
 
 export default function ProductList() {
-  const { refetch, data: products = [] } = useQuery({
-    queryKey: ['products'],
-    queryFn: async () => {
-      const res = await fetch('https://fakestoreapi.com/products')
-      return res.json()
-    },
-  })
+    const[refetch,products]=useProducts()
+
  
 
   return (
     <>
     
     <div className='text-end'>
-        <button className='btn bg-emerald-400 mt-5' onClick={handleAddProduct}>Add Product</button>
+
+        <Link to='/dashboard/addproduct'><button className='btn bg-emerald-400 mt-5' >Add Product</button></Link>
     </div>
     <div className="overflow-x-auto h-96 mt-16">
     <table className="table">
