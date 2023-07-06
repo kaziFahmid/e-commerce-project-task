@@ -22,10 +22,10 @@ export default function Signup() {
 
     const user = {
       email,
-
       phone,
+      status:"user"
     };
-    console.log(user);
+    
   };
 
   return (
