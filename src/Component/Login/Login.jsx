@@ -1,7 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import useAuth from '../../hooks/useAuth'
+import { handler } from 'daisyui'
 
 export default function Login() {
+    const{user,signInUser}=useAuth()
+
+    e.preventDefault(); 
+  
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+ 
+    signInUser(email, password);
    
   return (
     <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -13,7 +23,7 @@ export default function Login() {
     </div>
 
     <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-      <form className="space-y-6" action="#" method="POST">
+      <form  onSubmit={handleSubmit}className="space-y-6" action="#" method="POST">
         <div>
           <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
             Email address

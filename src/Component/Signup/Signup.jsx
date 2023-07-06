@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-
+import useAuth from '../../hooks/useAuth';
+import axios from 'axios';
+import {  useLocation, useNavigate } from 'react-router-dom'
 export default function Signup() {
+    let navigate = useNavigate()
+    let location = useLocation();
+    let from = location.state?.from?.pathname || "/";
   const [phoneNumberError, setPhoneNumberError] = useState('');
-
+  const { user, createUser } = useAuth();
   const handleSubmit = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
@@ -20,11 +25,32 @@ export default function Signup() {
       // Proceed with the signup process or other actions
     }
 
-    const user = {
+    const users = {
       email,
       phone,
       status:"user"
     };
+
+
+  createUser( email,password)
+  .then((result) => {
+    // Signed in 
+    const user = result.user;
+    console.log(user)
+    axios.post('/allusers',users)
+    .then(res=>console.log(res))
+    navigate(from, { replace: true })
+
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // ..
+  });
+
+
+
+
     
   };
 
