@@ -25,6 +25,7 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query'
 import AddProduct from './Component/Home/Products/AddProduct';
+import Carts from './Component/Home/Products/Carts';
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       {
         path:"/",
         element:<Home/>
+      },
+      {
+        path:"/carts",
+        element:<Carts/>
       }
     ]
 
