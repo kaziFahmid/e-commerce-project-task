@@ -11,7 +11,7 @@ export default function ProductCard({image,title,price,description,id}) {
       <h2 className="card-title ">{title}</h2>
       <p>Price : {price}</p>
       <div className="card-actions justify-center mt-4">
-       <Link> <button className="btn btn-primary">View Details</button></Link>
+       <Link to={`/productdetails/${id}`}> <button className="btn btn-primary">View Details</button></Link>
       
       </div>
     </div>
