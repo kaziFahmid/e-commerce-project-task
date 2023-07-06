@@ -7,7 +7,7 @@ export default function Header() {
   <div>
   <a className="btn btn-ghost normal-case text-xl ms-20 text-blue-500">E-Commerce</a>
   </div>
-  <ul className='flex justify-center items-center gap-5 me-20'>
+  <ul className='md:flex hidden justify-center items-center gap-5 md:me-20'>
   <Link><li className='hover:text-blue-500 duration-300 btn btn-ghost normal-case text-xl text-slate-700'>Home</li></Link>
   <Link to='/login'> <li className='text-slate-700 hover:text-blue-500 duration-300 btn btn-ghost normal-case text-xl'>Login</li></Link>
   <Link to='/signup'>  <li className='text-slate-700 hover:text-blue-500 duration-300 btn btn-ghost normal-case text-xl'>Signup</li></Link>
