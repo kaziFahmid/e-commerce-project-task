@@ -25,6 +25,7 @@ export default function ProductList() {
           <th>Image</th>
           <th>Title</th>
           <th>Category</th>
+          <th>Details</th>
         
         </tr>
       </thead>
@@ -38,6 +39,7 @@ export default function ProductList() {
 </div></td>
           <td>{product.title}</td>
           <td>{product.category} </td>
+          <td><Link to={`/productdetails/${product._id}`}><button className='bg-red-500 btn'>Details</button></Link></td>
         </tr>})}
        
 
