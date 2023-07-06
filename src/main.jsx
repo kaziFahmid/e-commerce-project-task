@@ -13,6 +13,7 @@ import Signup from './Component/Signup/Signup';
 import ProductDetails from './Component/Home/Products/ProductDetails';
 import axios from 'axios';
 import AuthProvider from './Component/AuthProvider/AuthProvider';
+import Dashboard from './Component/Dashboard/Dashboard';
 
 axios.defaults.baseURL=`http://localhost:5000/`
 axios.interceptors.request.use((req)=>{return req})
@@ -43,8 +44,18 @@ const router = createBrowserRouter([
     path:"/productdetails/:id",
     element:<ProductDetails/>,
     loader: ({params})=>fetch(`https://fakestoreapi.com/products/${params.id}`)
-  }
-
+  },
+  {
+    path:"/dashboard",
+    element:<Dashboard/>,
+    children:[
+      {
+        path:"/dashboard",
+        element:<Dashboard/>,
+      }
+    ]
+    
+  },
 
 
 ]);

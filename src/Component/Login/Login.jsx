@@ -1,17 +1,32 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import useAuth from '../../hooks/useAuth'
-import { handler } from 'daisyui'
 
+import {  useLocation, useNavigate } from 'react-router-dom'
 export default function Login() {
     const{user,signInUser}=useAuth()
+    let navigate = useNavigate()
+    let location = useLocation();
+    let from = location.state?.from?.pathname || "/";
+    let handleSubmit = (e) => {
+        e.preventDefault(); 
+        
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+        
+        signInUser(email, password)
+        .then((result) => {
+        
+            const user = result.user;
+            navigate(from, { replace: true });
+        
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+          });
 
-    e.preventDefault(); 
-  
-    const email = e.target.email.value;
-    const password = e.target.password.value;
- 
-    signInUser(email, password);
+      }
    
   return (
     <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
