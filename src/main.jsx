@@ -14,11 +14,16 @@ import ProductDetails from './Component/Home/Products/ProductDetails';
 import axios from 'axios';
 import AuthProvider from './Component/AuthProvider/AuthProvider';
 import Dashboard from './Component/Dashboard/Dashboard';
+import ProductList from './Component/Home/Products/ProductList';
 
 axios.defaults.baseURL=`http://localhost:5000/`
 axios.interceptors.request.use((req)=>{return req})
 axios.interceptors.response.use((res)=>{return res.data})
+import {
 
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
 
 const router = createBrowserRouter([
   {
@@ -50,19 +55,23 @@ const router = createBrowserRouter([
     element:<Dashboard/>,
     children:[
       {
-        path:"/dashboard",
-        element:<Dashboard/>,
+        path:"/dashboard/productlist",
+        element:<ProductList/>,
       }
     ]
+ 
     
   },
 
 
 ]);
+const queryClient = new QueryClient()
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+      <QueryClientProvider client={queryClient}>
     <AuthProvider>
     <RouterProvider router={router} />
     </AuthProvider>
+    </QueryClientProvider>
   </React.StrictMode>,
 )
