@@ -2,7 +2,8 @@ import axios from 'axios';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 export default function ProductCard({ image, title, price, description, _id }) {
   const { refetch, data: carts = [] } = useQuery({
     queryKey: ['carts'],
@@ -22,14 +23,20 @@ export default function ProductCard({ image, title, price, description, _id }) {
     }
 
     axios.post('/carts', product).then((res) => {
-      console.log(res);
-      // Refresh the cart data
+      if(res.insertedId){
+        toast("Products has been added to Cart")
+      }
+      
       refetch();
     });
   };
 
   return (
+ 
+    <>
+  
     <div className="card mt-12 bg-base-100 shadow-xl">
+
       <figure>
         <img src={image} className="img-fluid h-56" alt="Shoes" />
       </figure>
@@ -47,9 +54,13 @@ export default function ProductCard({ image, title, price, description, _id }) {
           </button>
           <Link to={`/productdetails/${_id}`}>
             <button className="btn btn-primary">View Details</button>
+            <ToastContainer />
           </Link>
         </div>
       </div>
+
     </div>
+    
+    </>
   );
 }

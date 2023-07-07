@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React from 'react'
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 export default function AddaCustomer() {
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -15,13 +16,16 @@ export default function AddaCustomer() {
             role,
           })
           .then((response) => {
-            console.log(response);
+            if(response.insertedId){
+                toast("New Customer has been added");
+            };
      
           })
           
       };
   return (
     <div className="flex justify-center items-center  mt-28">
+        <ToastContainer />
     <form onSubmit={handleSubmit} className="bg-white w-3/4 shadow-md rounded px-8 pt-6 pb-8 mb-4">
       <div className="mb-4">
         <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2">

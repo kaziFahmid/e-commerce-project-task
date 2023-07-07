@@ -1,7 +1,8 @@
 import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 import React from 'react'
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 export default function Carts() {
 
   const { refetch, data: carts = [] } = useQuery({
@@ -15,13 +16,15 @@ export default function Carts() {
       let handleDelete=(id)=>{
         axios.delete(`/carts/${id}`)
         .then(res=>{if(res.deletedCount>0){
+          toast("Cart deleted!");
+
             refetch()
         }})
       }
   return (
     <div>
       
-
+      <ToastContainer />
 
       <div className="overflow-x-auto">
   <table className="table">

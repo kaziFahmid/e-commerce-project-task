@@ -2,7 +2,8 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import React from 'react'
 import useProducts from '../../../hooks/useProducts';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 export default function AddProduct() {
     const[refetch,products]=useProducts()
      
@@ -22,6 +23,7 @@ export default function AddProduct() {
             .then(res=>{
                
                 if(res.insertedId){
+                  toast("New product has been added");
                     refetch()
                 }
             })
@@ -29,6 +31,7 @@ export default function AddProduct() {
       };
   return (
     <div className="flex mt-12 justify-center items-center">
+       <ToastContainer />
       <form
         onSubmit={handleSubmit}
         className=" md:w-96 bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
