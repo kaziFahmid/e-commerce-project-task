@@ -13,7 +13,9 @@ export default function Header() {
   <Link><li className='hover:text-blue-500 duration-300 btn btn-ghost normal-case text-xl text-slate-700'>Home</li></Link>
    
   <Link to='/carts'><li className='hover:text-blue-500 duration-300 btn btn-ghost normal-case text-xl text-slate-700'>Cart</li></Link>
-
+  <Link to='/dashboard'>
+    
+    <li className='hover:text-blue-500 duration-300 btn btn-ghost normal-case text-xl text-slate-700'>Dashboard</li></Link>
   {user?.email? <li className='text-slate-700 hover:text-blue-500 duration-300 btn btn-ghost normal-case text-xl' onClick={()=>logOut()}>Logout</li> :<Link to='/login'> <li className='text-slate-700 hover:text-blue-500 duration-300 btn btn-ghost normal-case text-xl'>Login</li></Link>}
 {!user?.email&&
   <Link to='/signup'>  <li className='text-slate-700 hover:text-blue-500 duration-300 btn btn-ghost normal-case text-xl'>Signup</li></Link>}

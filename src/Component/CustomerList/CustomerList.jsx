@@ -4,10 +4,15 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 export default function CustomerList() {
+    const token=localStorage.getItem('access-token')
     const { refetch, data: allusers = [] } = useQuery({
         queryKey: ['allusers'],
         queryFn: async () => {
-          const res = await fetch('http://localhost:5000/allusers')
+          const res = await fetch('http://localhost:5000/allusers',{
+            headers:{
+              authorization:`bearer ${token}`
+            }
+          })
           return res.json()
         },
       })
@@ -16,7 +21,7 @@ export default function CustomerList() {
 
   return (
     <div>
-        <div className='text-end'>
+        <div className='text-end mt-8' >
         <Link to='/dashboard/addacustomer'><button className="btn btn-primary">Add a Customer</button></Link>
         </div>
       <div className="overflow-x-auto">
