@@ -9,7 +9,7 @@ export default function Header() {
   return (
 <div className="navbar  shadow-md bg-white text-neutral-content flex justify-between items-center">
   <div>
-  <a className="btn btn-ghost normal-case text-xl ms-20 text-blue-500">E-Commerce</a>
+  <a className="btn btn-ghost normal-case text-xl md:ms-20 text-blue-500">E-Commerce</a>
   </div>
   <div>
 

@@ -15,7 +15,7 @@ export default function useAdmin() {
 
 
         queryFn: async () => {
-          const res = await fetch(`http://localhost:5000/allusers/admin/${user?.email}`)
+          const res = await fetch(`https://e-commerce-server-hazel.vercel.app/allusers/admin/${user?.email}`)
           
 
           return res.json()

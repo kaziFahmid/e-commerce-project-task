@@ -16,7 +16,7 @@ import AuthProvider from './Component/AuthProvider/AuthProvider';
 import Dashboard from './Component/Dashboard/Dashboard';
 import ProductList from './Component/Home/Products/ProductList';
 
-axios.defaults.baseURL=`http://localhost:5000/`
+axios.defaults.baseURL=`https://e-commerce-server-hazel.vercel.app/`
 axios.interceptors.request.use((req)=>{return req})
 axios.interceptors.response.use((res)=>{return res.data})
 import {
@@ -57,7 +57,7 @@ const router = createBrowserRouter([
   {
     path:"/productdetails/:id",
     element:<ProductDetails/>,
-    loader: ({params})=>fetch(`http://localhost:5000/products/${params.id}`)
+    loader: ({params})=>fetch(`https://e-commerce-server-hazel.vercel.app/products/${params.id}`)
   },
   {
     path:"/dashboard",
@@ -82,7 +82,7 @@ const router = createBrowserRouter([
       {
         path:"/dashboard/customerdetails/:id",
         element:<CustomerDetails/>,
-        loader:({params})=> fetch(`http://localhost:5000/allusers/${params.id}`)
+        loader:({params})=> fetch(`https://e-commerce-server-hazel.vercel.app/allusers/${params.id}`)
 
       }
 

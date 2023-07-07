@@ -8,7 +8,7 @@ export default function ProductCard({ image, title, price, description, _id }) {
   const { refetch, data: carts = [] } = useQuery({
     queryKey: ['carts'],
     queryFn: async () => {
-      const res = await fetch('http://localhost:5000/carts');
+      const res = await fetch('https://e-commerce-server-hazel.vercel.app/carts');
       return res.json();
     },
   });
