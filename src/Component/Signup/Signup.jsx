@@ -28,7 +28,7 @@ export default function Signup() {
     const users = {
       email,
       phone,
-      status:"user"
+      role:"user"
     };
 
 

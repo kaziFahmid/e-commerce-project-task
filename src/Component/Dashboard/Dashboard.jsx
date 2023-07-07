@@ -9,7 +9,7 @@ export default function Dashboard() {
             <h2 className='text-2xl text-center '>Admin</h2>
             <ul className='mt-12 text-center'>
                <Link to='/dashboard/productlist'><li>Product List</li></Link>
-               <Link><li>Product List</li></Link>
+               <Link to='/dashboard/customerlist'><li>Customer List</li></Link>
             
             </ul>
         </div>

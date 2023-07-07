@@ -27,6 +27,8 @@ import {
 import AddProduct from './Component/Home/Products/AddProduct';
 import Carts from './Component/Home/Products/Carts';
 import CustomerList from './Component/CustomerList/CustomerList';
+import CustomerDetails from './Component/CustomerList/CustomerDetails';
+import AddaCustomer from './Component/CustomerList/AddaCustomer';
 
 const router = createBrowserRouter([
   {
@@ -72,6 +74,16 @@ const router = createBrowserRouter([
       {
         path:"/dashboard/customerlist",
         element:<CustomerList/>
+      },
+      {
+        path:"/dashboard/addacustomer",
+        element:<AddaCustomer/>
+      },
+      {
+        path:"/dashboard/customerdetails/:id",
+        element:<CustomerDetails/>,
+        loader:({params})=> fetch(`http://localhost:5000/allusers/${params.id}`)
+
       }
 
     ]
